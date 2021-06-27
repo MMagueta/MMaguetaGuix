@@ -1,5 +1,5 @@
 (define-module (nongnu packages font-twitter-emoji)
-  #:use-module (nongnu packages)
+  ;; #:use-module (nongnu packages)
   #:use-module (guix gexp)
   #:use-module (guix packages)
   #:use-module (guix download)
