@@ -1,7 +1,6 @@
 #+TITLE: Magueta's GNU Guix channel
 
-This repository is a GNU Guix channel for hosting Magueta's packages
+This repository is a GNU Guix channel for hosting Magueta's packages, forked from [[https://gitlab.com/nonguix/nonguix/][nonguix]].
 
 * Packages:
   + .NET (dotnet) 5.0.201
-  + Discord 0.0.15
