@@ -20,10 +20,6 @@
   #:use-module (gnu packages backup)
   #:use-module (gnu packages gl)
   #:use-module (gnu packages sdl)
-  #:use-module (gnu packages alsa-lib)
-  #:use-module (gnu packages libsndfile)
-  #:use-module (gnu packages flac)
-  #:use-module (gnu packages zlib)
   #:use-module (guix build-system gnu)
   #:use-module (guix download)
   #:use-module ((guix licenses) #:prefix license:)
@@ -57,30 +53,3 @@ compatible.  It's also perfect for command line freaks.")
     (license (list license:bsd-3
                    ;; Many non-free licenses.
                    (nonfree "https://sourceforge.net/p/dgen/dgen/ci/master/tree/COPYING")))))
-
-
-(define-public mednafen
-  (package
-    (name "mednafen")
-    (version "1.27.1")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (string-append
-             "https://mednafen.github.io/releases/files/mednafen-" version ".tar.xz"))
-       (sha256
-        (base32
-         "1nv7lnmwfj8g7v1xypf4vdprzmgbn7qbwlnp9cjqrwj3b98rdv49"))))
-    (build-system gnu-build-system)
-    (inputs
-     `(("sdl" ,sdl)
-       ("libsndfile" ,libsndfile)
-       ("alsa-lib" ,alsa-lib)
-       ("flac" ,flac)
-       ("zlib" ,zlib)
-       ("libgl" ,mesa)))
-    (home-page "https://mednafen.github.io/")
-    (synopsis "A multi-system emulator")
-    (description
-     "Mednafen is a portable, utilizing OpenGL and SDL, argument(command-line)-driven multi-system emulator.")
-    (license gpl2+)))
