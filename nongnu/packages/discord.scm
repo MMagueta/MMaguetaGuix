@@ -91,7 +91,7 @@
              ("nspr"                       ,nspr)
              ("nss"                        ,nss)
              ("pango"                      ,pango)
-             ("systemd"                    ,systemd)
+             ;; ("systemd"                    ,systemd)
              ("unzip"                      ,unzip)
              ("wget"                       ,wget)))
    (native-inputs `(("gzip"                ,gzip)
