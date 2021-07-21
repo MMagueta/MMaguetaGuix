@@ -11,7 +11,7 @@ This repository is a GNU Guix channel for hosting Magueta's packages, forked fro
   + Remove packages such as omnisharp
   + Simplify build system structure
   + Add simple build packages such as mednafen
-  + Add [MageMacs](https://github.com/MMagueta/MageMacs) as a emacs bundle
+  + Add [[https://github.com/MMagueta/MageMacs][MageMacs] as a emacs bundle
 
 * How can I add this channel?
   #+BEGIN_SRC scheme
