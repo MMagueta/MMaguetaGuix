@@ -5,6 +5,7 @@
 ;;; Copyright © 2020, 2021 James Smith <jsubuntuxp@disroot.org>
 ;;; Copyright © 2020, 2021 Jonathan Brielmaier <jonathan.brielmaier@web.de>
 ;;; Copyright © 2021 Mathieu Othacehe <m.othacehe@gmail.com>
+;;; Copyright © 2021 Brice Waegeneire <brice@waegenei.re>
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU General Public License as published by
@@ -56,33 +57,37 @@
      "The unmodified Linux kernel, including nonfree blobs, for running Guix
 System on hardware which requires nonfree software to function.")))
 
+(define-public linux-5.13
+  (corrupt-linux linux-libre-5.13 "5.13.4"
+                 "0v3x1q1r0r8lyjg5hsj7yayfxqcgfj01p86ya4s0i9jaclpwv4ki"))
+
 (define-public linux-5.12
-  (corrupt-linux linux-libre-5.12 "5.12.13"
-                 "0mfjkncsa7vq13689dzzwms6wzsaj347qm1vf7k82nb3wp6myj5g"))
+  (corrupt-linux linux-libre-5.12 "5.12.19"
+                 "0wscz736n13m833cd12lskn47r0b8ki4fhgpjnwga0jsab9iqf79"))
 
 (define-public linux-5.10
-  (corrupt-linux linux-libre-5.10 "5.10.46"
-                 "058lvk0hc6qk3l485kda7cxkdrjk1kd0f75cp7pmnckbkjij54an"))
+  (corrupt-linux linux-libre-5.10 "5.10.52"
+                 "0ydf09wsg0pkjm9dk8y730ksg15p5rlbhq445zx8k191zah5g7kn"))
 
 (define-public linux-5.4
-  (corrupt-linux linux-libre-5.4 "5.4.124"
-                 "10kxa1ng9w9xd2d5xh48fbhp1kri650p90nihrcpnb845gd9vwpp"))
+  (corrupt-linux linux-libre-5.4 "5.4.134"
+                 "0haqw1w6f8p330ydbsl7iml1x0qqrv63az6921p2a70n88b8dyy9"))
 
 (define-public linux-4.19
-  (corrupt-linux linux-libre-4.19 "4.19.193"
-                 "17ci49ak5iw01kfkn3fcgncg9hm4j188417bxi3bnsq9il5ymhl4"))
+  (corrupt-linux linux-libre-4.19 "4.19.198"
+                 "13k0r6a4n8nbni64a18wqzy0pg4vn1zw2li78xrm78rqcrnah85y"))
 
 (define-public linux-4.14
-  (corrupt-linux linux-libre-4.14 "4.14.235"
-                 "03k793hj294zf7jncs1h8zh5dh6xagkfvnydd9jadxvq2z8vvl8f"))
+  (corrupt-linux linux-libre-4.14 "4.14.240"
+                 "1k65qwzlnqnh9ym0n2fxpa8nk2qwvykwhwgaixk3b7ndzmr8b6c8"))
 
 (define-public linux-4.9
-  (corrupt-linux linux-libre-4.9 "4.9.271"
-                 "1480miixphkf0b8w00m753ar7yp1rnl3zyr9wp4inngi2f90553r"))
+  (corrupt-linux linux-libre-4.9 "4.9.276"
+                 "16jp05jhmqcp8lawqga69gxn1acdkxsskn3a6wf0635863fky3hv"))
 
 (define-public linux-4.4
-  (corrupt-linux linux-libre-4.4 "4.4.271"
-                 "0n5h2lv1p542a45pas3pi0vkhgrk096vwrps79a7v3a6c1q2dxx6"))
+  (corrupt-linux linux-libre-4.4 "4.4.276"
+                 "1hf9h5kr1ws2lvinzq6cv7aps8af1kx4q8j4bsk2vv4i2zvmfr7y"))
 
 (define-public linux linux-5.12)
 ;; linux-lts points to the *newest* released long-term support version.
@@ -535,6 +540,41 @@ package contains nonfree firmware for the following chips:
 
 (define-public rtl-bt-firmware
   (deprecated-package "rtl-bt-firmware" realtek-firmware))
+
+(define-public rtl8192eu-linux-module
+  (let ((commit "cdf1b06b7bff49042f42d0294610d3f3780ee62b")
+        (revision "1"))
+    (package
+      (name "rtl8192eu-linux-module")
+      (version (git-version "0.0.0" revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/clnhub/rtl8192eu-linux")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32
+           "1afscxmjmapvm8hcd0blp1fn5lxg92rhpiqkgj89x53shfsp12d6"))))
+      (build-system linux-module-build-system)
+      (arguments
+       `(#:make-flags
+         (list "CC=gcc"
+               (string-append "KSRC="
+                              (assoc-ref %build-inputs "linux-module-builder")
+                              "/lib/modules/build"))
+         #:phases
+         (modify-phases %standard-phases
+           (replace 'build
+             (lambda* (#:key (make-flags '()) #:allow-other-keys)
+               (apply invoke "make" make-flags))))
+         #:tests? #f))                  ; no test suite
+      (home-page "https://github.com/clnhub/rtl8192eu-linux")
+      (synopsis "Linux driver for Realtek RTL8192EU wireless network adapters")
+      (description "This is Realtek's RTL8192EU Linux driver for wireless
+network adapters.")
+      (license gpl2))))
 
 (define broadcom-sta-version "6.30.223.271")
 
