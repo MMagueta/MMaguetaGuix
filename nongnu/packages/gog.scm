@@ -15,6 +15,9 @@
 ;;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 (define-module (nongnu packages gog)
+  #:use-module (gnu packages gnome)
+  #:use-module (guix download)
+  #:use-module (gnu packages)
   #:use-module (gnu packages boost)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages crypto)
@@ -29,6 +32,22 @@
   #:use-module (guix git-download)
   #:use-module (guix build-system cmake)
   #:use-module ((guix licenses) #:prefix license:))
+
+(define-public adwaita-old-icon-theme
+  (package (inherit gnome-icon-theme)
+	   (name "adwaita-old-icon-theme")
+	   (version "3.30.0")
+	   (source (origin
+		    (method url-fetch)
+		    (uri (string-append "mirror://gnome/sources/" name "/"
+					(version-major+minor version) "/"
+					name "-" version ".tar.xz"))
+		    (sha512
+		     (base64
+		      "IitEcx8nYVbpVrZBE9YKS1Yo7Qr7a1ipv1/IhdL4mUJPZFUs8S2eaZwv4gv4QAk6WHwSzELJ4GnzH688zDhfpg=="))))
+	   (native-inputs
+	    `(("gtk-encode-symbolic-svg" ,gtk+ "bin")))))
+
 
 (define-public lgogdownloader
   (package
