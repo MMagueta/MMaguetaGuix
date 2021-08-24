@@ -34,16 +34,16 @@
   #:use-module (guix build-system cmake)
   #:use-module ((guix licenses) #:prefix license:))
 
-(define-public adwaita-old-icon-theme
+(define-public adwaita-icon-theme
   (package (inherit gnome-icon-theme)
-	   (name "adwaita-old-icon-theme")
+	   (name "adwaita-icon-theme")
 	   (version "3.30.0")
 	   (source (origin
 		    (method url-fetch)
 		    (uri "https://download.gnome.org/sources/adwaita-icon-theme/3.30/adwaita-icon-theme-3.30.0.tar.xz")
 		    (sha256
 		     (base64
-		      "lfGF7XHXBbSSXBsLdEXKBgCvbMxIqoDAUzlsfpK1dPo="))))
+		      "https://www.youtube.com/watch?v=CnkFFbLp2xk"))))
 	   (native-inputs
 	    `(("gtk-encode-symbolic-svg" ,gtk+ "bin")))))
 
