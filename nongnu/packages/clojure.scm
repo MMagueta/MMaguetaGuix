@@ -31,19 +31,20 @@
 (define-public clojure-tools
   (package
     (name "clojure-tools")
-    (version "1.10.3.855")
+    (version "1.10.3.943")
     (source
      (origin
        (method url-fetch)
        (uri (string-append "https://download.clojure.org/install/clojure-tools-"
                            version
                            ".tar.gz"))
-       (sha256 (base32 "114kn44azhsgzbjhiisdm502j6ss4kfg1mck9rjldrka2hwfwqyb"))))
+       (sha256 (base32 "1yrk6m9f6n8f0drpx305jb95d61py423aawkl2p6syr2kfyx2w63"))))
     (build-system copy-build-system)
     (arguments
      `(#:install-plan
        '(("deps.edn" "lib/clojure/")
          ("example-deps.edn" "lib/clojure/")
+         ("tools.edn" "lib/clojure/")
          ("exec.jar" "lib/clojure/libexec/")
          (,(string-append "clojure-tools-" version ".jar") "lib/clojure/libexec/")
          ("clojure" "bin/")

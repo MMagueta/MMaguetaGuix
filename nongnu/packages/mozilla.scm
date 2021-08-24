@@ -83,19 +83,19 @@
 
 ;; Update this id with every firefox update to it's release date.
 ;; It's used for cache validation and therefor can lead to strange bugs.
-(define %firefox-build-id "20210719000000")
+(define %firefox-build-id "20210817000000")
 
 (define-public firefox
   (package
     (name "firefox")
-    (version "90.0.1")
+    (version "91.0.1")
     (source
      (origin
        (method url-fetch)
        (uri (string-append "https://archive.mozilla.org/pub/firefox/releases/"
                            version "/source/firefox-" version ".source.tar.xz"))
        (sha256
-        (base32 "11qavjcw7mfnxz9qhagvvvprchqn7wyl4697fb49c8byhnjnqyc5"))))
+        (base32 "0qprasrcdknf0k9l0clz7xp6q518nb107whwbag41r5kkkn58n5r"))))
     (build-system gnu-build-system)
     (arguments
      `(#:configure-flags
@@ -350,7 +350,7 @@
        ("gtk+" ,gtk+)
        ("gtk+-2" ,gtk+-2)
        ("hunspell" ,hunspell)
-       ("icu4c" ,icu4c-67)
+       ("icu4c" ,icu4c-69)
        ("jemalloc" ,jemalloc)
        ("libcanberra" ,libcanberra)
        ("libevent" ,libevent)
@@ -380,7 +380,7 @@
        ("zlib" ,zlib)))
     (native-inputs
      `(("autoconf" ,autoconf-2.13)
-       ("cargo" ,rust-1.47 "cargo")
+       ("cargo" ,rust-1.51 "cargo")
        ("clang" ,clang-10)
        ("llvm" ,llvm-10)
        ("m4" ,m4)
@@ -390,7 +390,7 @@
        ("pkg-config" ,pkg-config)
        ("python" ,python)
        ("python2" ,python-2.7)
-       ("rust" ,rust-1.47)
+       ("rust" ,rust-1.51)
        ("rust-cbindgen" ,rust-cbindgen-0.19)
        ("which" ,which)
        ("yasm" ,yasm)))
