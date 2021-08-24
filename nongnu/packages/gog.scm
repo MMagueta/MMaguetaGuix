@@ -42,8 +42,8 @@
 		    (method url-fetch)
 		    (uri "https://download.gnome.org/sources/adwaita-icon-theme/3.30/adwaita-icon-theme-3.30.0.tar.xz")
 		    (sha256
-		     (base64
-		      "https://www.youtube.com/watch?v=CnkFFbLp2xk"))))
+		     (base32
+		      "1yklnn97wv1rag081aj8rinay006r92p82qvbj9b81fpf7nqbwcm"))))
 	   (native-inputs
 	    `(("gtk-encode-symbolic-svg" ,gtk+ "bin")))))
 
