@@ -43,7 +43,7 @@
 		    (uri "https://download.gnome.org/sources/adwaita-icon-theme/3.30/adwaita-icon-theme-3.30.0.tar.xz")
 		    (sha256
 		     (base32
-		      "1yklnn97wv1rag081aj8rinay006r92p82qvbj9b81fpf7nqbwcm"))))
+		      "0jz6wiq2yw5jda56jgi1dys7hlvzk1a49xql7lccrrm3fj8p41li"))))
 	   (native-inputs
 	    `(("gtk-encode-symbolic-svg" ,gtk+ "bin")))))
 
