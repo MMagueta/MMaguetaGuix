@@ -39,12 +39,10 @@
 	   (version "3.30.0")
 	   (source (origin
 		    (method url-fetch)
-		    (uri (string-append "mirror://gnome/sources/" name "/"
-					(version-major+minor version) "/"
-					name "-" version ".tar.xz"))
+		    (uri "https://download.gnome.org/sources/adwaita-icon-theme/3.30/adwaita-icon-theme-3.30.0.tar.xz")
 		    (sha512
 		     (base64
-		      "IitEcx8nYVbpVrZBE9YKS1Yo7Qr7a1ipv1/IhdL4mUJPZFUs8S2eaZwv4gv4QAk6WHwSzELJ4GnzH688zDhfpg=="))))
+		      "oceva43OEYwHheqGVwAn5PnN0R1sqfpC/to+j362fxcEJJI2d1h906Z7J0O+CfKv2gjEk9Hec1c6qFM8JQItNg=="))))
 	   (native-inputs
 	    `(("gtk-encode-symbolic-svg" ,gtk+ "bin")))))
 
