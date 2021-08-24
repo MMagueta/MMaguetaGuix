@@ -40,9 +40,9 @@
 	   (source (origin
 		    (method url-fetch)
 		    (uri "https://download.gnome.org/sources/adwaita-icon-theme/3.30/adwaita-icon-theme-3.30.0.tar.xz")
-		    (sha512
+		    (sha256
 		     (base64
-		      "oceva43OEYwHheqGVwAn5PnN0R1sqfpC/to+j362fxcEJJI2d1h906Z7J0O+CfKv2gjEk9Hec1c6qFM8JQItNg=="))))
+		      "lfGF7XHXBbSSXBsLdEXKBgCvbMxIqoDAUzlsfpK1dPo="))))
 	   (native-inputs
 	    `(("gtk-encode-symbolic-svg" ,gtk+ "bin")))))
 
